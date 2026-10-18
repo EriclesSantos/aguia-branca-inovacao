@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function role() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.tipo; }
+    function isManager() { return signedIn() && role() == 'gestor'; }
+    function isLeader() { return signedIn() && role() == 'lider'; }
+    match /users/{uid} {
+      allow read: if signedIn() && request.auth.uid == uid;
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['uid', 'nome', 'email', 'tipo'])
+        && request.resource.data.uid == uid
+        && request.resource.data.tipo == 'operador';
+      allow update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['nome', 'email']);
+      // Mudanças de perfil são feitas somente por administração confiável.
+    }
+    match /ideas/{id} {
+      allow read: if signedIn() && (isManager() || isLeader() || resource.data.usuarioId == request.auth.uid);
+      allow create: if signedIn() && role() == 'operador'
+        && request.resource.data.keys().hasOnly(['titulo', 'descricao', 'status', 'prioridade', 'usuarioId'])
+        && request.resource.data.usuarioId == request.auth.uid
+        && request.resource.data.status == 'Pendente'
+        && request.resource.data.prioridade == 'Normal';
+      allow update: if isManager()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'prioridade']);
+    }
+    match /projects/{id} {
+      allow read: if signedIn() && (isManager() || isLeader());
+      allow create, update: if isManager();
+    }
+    match /strategies/{id} {
+      allow read: if signedIn();
+      allow create, update, delete: if isLeader();
+    }
+  }
+}

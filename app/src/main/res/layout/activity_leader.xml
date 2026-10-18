@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dashboard"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/btnDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Abrir Dashboard Completo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="CRUD Estratégias"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etTituloEstrategia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Título da estratégia" />
+
+        <EditText
+            android:id="@+id/etDescricaoEstrategia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:hint="Descrição da estratégia"
+            android:minLines="3" />
+
+        <Button
+            android:id="@+id/btnSalvarEstrategia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar Estratégia" />
+
+        <Button
+            android:id="@+id/btnExcluirEstrategia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Excluir Estratégia Selecionada" />
+
+        <ListView
+            android:id="@+id/listStrategiesLeader"
+            android:layout_width="match_parent"
+            android:layout_height="260dp" />
+
+        <TextView
+            android:id="@+id/tvProjetos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Projetos: 0" />
+
+        <TextView
+            android:id="@+id/tvInvestimento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Investimento: 0" />
+
+        <TextView
+            android:id="@+id/tvRetorno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retorno: 0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Projetos"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <ListView
+            android:id="@+id/listProjects"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
+
+    </LinearLayout>
+
+</ScrollView>
