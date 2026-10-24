@@ -66,9 +66,3 @@ O comando usa `demo-aguia-portfolio`, um projeto local de demonstração, sem ac
 ## Estado e validação
 
 Compilação debug, teste unitário Android original e oito testes de autorização Firestore executados com sucesso. O teste unitário original é básico e não valida os fluxos completos de UI. A operação ponta a ponta com um projeto Firebase configurado pelo leitor deve ser validada no dispositivo. A integração com Firebase não depende da configuração original do autor, que não é distribuída.
-
-## Contexto e autoria
-
-Trabalho acadêmico FIAP, publicado no portfólio de Ericles Santos. A documentação de entrega preserva o contexto original e os créditos que acompanham o material. As marcas citadas identificam o desafio acadêmico; este repositório não é um produto oficial das empresas.
-
-[Detalhes da validação](docs/validacao.md).
